@@ -166,8 +166,12 @@ $ docker inspect bridge
 </details>
 
 #### Docker exec
+<details>
+<summary>Click to expand</summary>
+
+#### Docker exec & ping another container within the same bridge network
 ```
-docker exec -it thor sh
+$ docker exec -it thor sh
 / # ip add
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue qlen 1000
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
@@ -185,3 +189,5 @@ PING 172.17.0.3 (172.17.0.3): 56 data bytes
 64 bytes from 172.17.0.3: seq=1 ttl=64 time=0.224 ms
 64 bytes from 172.17.0.3: seq=2 ttl=64 time=0.084 ms
 ```
+</details>
+
