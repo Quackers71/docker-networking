@@ -36,7 +36,7 @@ CONTAINER ID   IMAGE     COMMAND                  CREATED              STATUS   
 ```
 
 Current setup
-![](Default%20Bridge.png)
+![](./Default%20Bridge%202.png)
 
 #### ip add show
 <details>
