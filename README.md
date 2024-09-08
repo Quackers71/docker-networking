@@ -207,3 +207,24 @@ default via 172.17.0.1 dev eth0
 ```
 </details>
 
+#### Exposing port 80:80
+```
+$ docker ps
+CONTAINER ID   IMAGE     COMMAND                  CREATED       STATUS       PORTS     NAMES
+2dbd39703a70   nginx     "/docker-entrypoint.…"   3 hours ago   Up 3 hours   80/tcp    stormbreaker
+199ac648b515   busybox   "sh"                     3 hours ago   Up 3 hours             mjolnir
+03c77f5b00cb   busybox   "sh"                     3 hours ago   Up 3 hours             thor
+$ docker stop stormbreaker 
+stormbreaker
+$ docker run -itd --rm -p 80:80 --name stormbreaker nginx
+357e250f6a0719e8ea6c72aabba0d011412ada6e8048bfc630bef462ca479ab8
+$ docker ps
+CONTAINER ID   IMAGE     COMMAND                  CREATED         STATUS         PORTS                               NAMES
+357e250f6a07   nginx     "/docker-entrypoint.…"   4 seconds ago   Up 3 seconds   0.0.0.0:80->80/tcp, :::80->80/tcp   stormbreaker
+199ac648b515   busybox   "sh"                     3 hours ago     Up 3 hours                                         mjolnir
+03c77f5b00cb   busybox   "sh"                     3 hours ago     Up 3 hours                                         thor
+```
+
+Stormbreaker is now showing nginx via http://192.168.1.14:80
+![](./stormbreaker-nginx.png)
+
