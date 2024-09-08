@@ -36,7 +36,7 @@ CONTAINER ID   IMAGE     COMMAND                  CREATED              STATUS   
 ```
 
 Current setup
-![](./Default%20Bridge%202.png)
+![](./Default%20Bridge%203.png)
 
 #### ip add show
 <details>
@@ -188,6 +188,22 @@ PING 172.17.0.3 (172.17.0.3): 56 data bytes
 64 bytes from 172.17.0.3: seq=0 ttl=64 time=0.218 ms
 64 bytes from 172.17.0.3: seq=1 ttl=64 time=0.224 ms
 64 bytes from 172.17.0.3: seq=2 ttl=64 time=0.084 ms
+```
+#### You can also ping out to the internet and the ip route shows you're on Docker0 - 172.17.0.1 eth0
+```
+/ # ping networkchuck.com
+PING networkchuck.com (104.26.11.185): 56 data bytes
+64 bytes from 104.26.11.185: seq=0 ttl=55 time=26.570 ms
+64 bytes from 104.26.11.185: seq=1 ttl=55 time=89.022 ms
+64 bytes from 104.26.11.185: seq=2 ttl=55 time=22.566 ms
+64 bytes from 104.26.11.185: seq=3 ttl=55 time=30.838 ms
+^C
+--- networkchuck.com ping statistics ---
+4 packets transmitted, 4 packets received, 0% packet loss
+round-trip min/avg/max = 22.566/42.249/89.022 ms
+/ # ip route
+default via 172.17.0.1 dev eth0 
+172.17.0.0/16 dev eth0 scope link  src 172.17.0.2
 ```
 </details>
 
