@@ -96,3 +96,71 @@ $ bridge link
 11: veth2ab40f2@if10: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 master docker0 state forwarding priority 32 cost 2
 ```
 
+#### Docker inspect
+<details>
+<summary>Click to expand</summary>
+
+#### Docker inspect bridge
+```
+$ docker inspect bridge
+[
+    {
+        "Name": "bridge",
+        "Id": "4871c887007dd12af9ef5b1e0fa1a678d8c0585451c7a9072d46ed33af86afa9",
+        "Created": "2024-09-08T10:32:01.310467028+01:00",
+        "Scope": "local",
+        "Driver": "bridge",
+        "EnableIPv6": false,
+        "IPAM": {
+            "Driver": "default",
+            "Options": null,
+            "Config": [
+                {
+                    "Subnet": "172.17.0.0/16",
+                    "Gateway": "172.17.0.1"
+                }
+            ]
+        },
+        "Internal": false,
+        "Attachable": false,
+        "Ingress": false,
+        "ConfigFrom": {
+            "Network": ""
+        },
+        "ConfigOnly": false,
+        "Containers": {
+            "03c77f5b00cbce6f1af718073bffdc0ca407f93e260c43c4131ca2fe05408b65": {
+                "Name": "thor",
+                "EndpointID": "a90c0ed9748e083ed6867a1513ca6c248a60bb4292f67b916e19dcc3c8400d8f",
+                "MacAddress": "02:42:ac:11:00:02",
+                "IPv4Address": "172.17.0.2/16",
+                "IPv6Address": ""
+            },
+            "199ac648b515d0f44512003ec88be63ce910d0173726d383488fc64c5316d084": {
+                "Name": "mjolnir",
+                "EndpointID": "86e67549e9cfbc679652d84d707f2394e12d51245bc364e6ac95336424d5bef2",
+                "MacAddress": "02:42:ac:11:00:03",
+                "IPv4Address": "172.17.0.3/16",
+                "IPv6Address": ""
+            },
+            "2dbd39703a70e1632b3c1027bcefcfc7ab3fc6edbf171838c2795631daacd066": {
+                "Name": "stormbreaker",
+                "EndpointID": "15e8d1465034285d7c1d50d784d6f1aabe407a18cc31654b7047f3bd1b3d5911",
+                "MacAddress": "02:42:ac:11:00:04",
+                "IPv4Address": "172.17.0.4/16",
+                "IPv6Address": ""
+            }
+        },
+        "Options": {
+            "com.docker.network.bridge.default_bridge": "true",
+            "com.docker.network.bridge.enable_icc": "true",
+            "com.docker.network.bridge.enable_ip_masquerade": "true",
+            "com.docker.network.bridge.host_binding_ipv4": "0.0.0.0",
+            "com.docker.network.bridge.name": "docker0",
+            "com.docker.network.driver.mtu": "1500"
+        },
+        "Labels": {}
+    }
+]
+```
+</details>
