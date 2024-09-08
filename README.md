@@ -39,6 +39,10 @@ Current setup
 ![](Default%20Bridge.png)
 
 #### ip add show
+<details>
+<summary>Click to expand</summary>
+
+#### show all ip's
 ```
 $ ip add show
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
@@ -82,6 +86,7 @@ $ ip add show
     inet6 fe80::f0b7:7aff:fe7e:f36e/64 scope link 
        valid_lft forever preferred_lft forever
 ```
+</details>
 
 #### bridge link
 ```
