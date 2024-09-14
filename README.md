@@ -317,6 +317,31 @@ $ docker inspect asgard
 #### User Defined Bridge
 ![](./user-defined-bridge.png)
 
+#### Docker ps
+```
+$ docker ps
+CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS          PORTS                               NAMES
+5c0d7695b99e   busybox   "sh"                     8 minutes ago    Up 8 minutes                                        thor
+a69cafc4b7d8   busybox   "sh"                     9 minutes ago    Up 9 minutes                                        odin
+1e320bf79194   busybox   "sh"                     10 minutes ago   Up 10 minutes                                       loki
+327bae135209   nginx     "/docker-entrypoint.…"   10 minutes ago   Up 10 minutes   0.0.0.0:80->80/tcp, :::80->80/tcp   stormbreaker
+```
+
+#### Exec into Loki and ping Odin
+Both within Asgard Network
+```
+$ docker exec -it loki sh
+/ # ping odin
+PING odin (172.18.0.3): 56 data bytes
+64 bytes from 172.18.0.3: seq=0 ttl=64 time=0.129 ms
+64 bytes from 172.18.0.3: seq=1 ttl=64 time=0.094 ms
+64 bytes from 172.18.0.3: seq=2 ttl=64 time=0.085 ms
+64 bytes from 172.18.0.3: seq=3 ttl=64 time=0.092 ms
+^C
+--- odin ping statistics ---
+4 packets transmitted, 4 packets received, 0% packet loss
+```
+
 #### Docker TBC
 <details>
 <summary>Click to expand</summary>
