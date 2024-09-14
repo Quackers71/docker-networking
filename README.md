@@ -228,4 +228,98 @@ CONTAINER ID   IMAGE     COMMAND                  CREATED         STATUS        
 Stormbreaker is now showing nginx via http://192.168.1.14:80
 ![](./stormbreaker-nginx.png)
 
-# Up to 11:06/39:11
+#### Docker network create
+```
+$ docker network create asgard
+```
+
+#### Docker container within the asgard network
+```
+$ docker run -itd --rm --network asgard --name loki busybox
+$ docker run -itd --rm --network asgard --name odin busybox
+```
+
+#### Docker network ls
+```
+$ docker network ls
+NETWORK ID     NAME      DRIVER    SCOPE
+a10754f60e14   asgard    bridge    local
+addf0f0c89c6   bridge    bridge    local
+bb5c4a16fe34   host      host      local
+2aff5e84d0f7   none      null      local
+```
+
+#### bridge link
+```
+$ bridge link
+7: veth42bbb3f@if6: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 master docker0 state forwarding priority 32 cost 2 
+9: vethfc46897@if8: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 master br-a10754f60e14 state forwarding priority 32 cost 2 
+11: veth446fc84@if10: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 master br-a10754f60e14 state forwarding priority 32 cost 2 
+```
+
+
+#### Docker inspect
+<details>
+<summary>Click to expand</summary>
+
+#### Docker inspect asgard
+```
+$ docker inspect asgard 
+[
+    {
+        "Name": "asgard",
+        "Id": "a10754f60e148aeff48dd074c6a16dbe612a9f5d5a23510eb7f1b46a28022d3d",
+        "Created": "2024-09-14T17:53:29.56901692+01:00",
+        "Scope": "local",
+        "Driver": "bridge",
+        "EnableIPv6": false,
+        "IPAM": {
+            "Driver": "default",
+            "Options": {},
+            "Config": [
+                {
+                    "Subnet": "172.18.0.0/16",
+                    "Gateway": "172.18.0.1"
+                }
+            ]
+        },
+        "Internal": false,
+        "Attachable": false,
+        "Ingress": false,
+        "ConfigFrom": {
+            "Network": ""
+        },
+        "ConfigOnly": false,
+        "Containers": {
+            "63b88b58880beb1fb2b25b32270bdef87be37b77e92a11919d89044c24cd950d": {
+                "Name": "loki",
+                "EndpointID": "3b5a67f7ef7bd31112a34cd17ca8f56f39a582691df3d4bccc9e419bc688d4fb",
+                "MacAddress": "02:42:ac:12:00:02",
+                "IPv4Address": "172.18.0.2/16",
+                "IPv6Address": ""
+            },
+            "e4df4d93e09d4b64b76d83dd106cb6c3896623468a287a1aeb600fa303c85022": {
+                "Name": "odin",
+                "EndpointID": "6f262f75cf71f33dd7071388a98e39127e725c8c61d2d116af90a488371be672",
+                "MacAddress": "02:42:ac:12:00:03",
+                "IPv4Address": "172.18.0.3/16",
+                "IPv6Address": ""
+            }
+        },
+        "Options": {},
+        "Labels": {}
+    }
+]
+```
+</details>
+
+#### Docker run using asgard network
+<details>
+<summary>Click to expand</summary>
+
+#### Docker  container within the asgard network
+```
+$ docker run -itd --rm --network asgard --name loki busybox
+$ docker run -itd --rm --network asgard --name odin busybox
+```
+</details>
