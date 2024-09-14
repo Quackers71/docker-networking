@@ -35,8 +35,9 @@ CONTAINER ID   IMAGE     COMMAND                  CREATED              STATUS   
 03c77f5b00cb   busybox   "sh"                     3 minutes ago        Up 3 minutes                  thor
 ```
 
+#### Default Bridge
 Current setup
-![](./Default%20Bridge%203.png)
+![](./default-bridge.png)
 
 #### ip add show
 <details>
@@ -225,8 +226,8 @@ CONTAINER ID   IMAGE     COMMAND                  CREATED         STATUS        
 03c77f5b00cb   busybox   "sh"                     3 hours ago     Up 3 hours                                         thor
 ```
 
-Stormbreaker is now showing nginx via http://192.168.1.14:80
-![](./stormbreaker-nginx.png)
+Stormbreaker is now showing nginx via http://192.168.1.14
+![](./nginx.png)
 
 #### Docker network create
 ```
@@ -313,13 +314,14 @@ $ docker inspect asgard
 ```
 </details>
 
-#### Docker run using asgard network
+#### User Defined Bridge
+![](./user-defined-bridge.png)
+
+#### Docker TBC
 <details>
 <summary>Click to expand</summary>
 
-#### Docker  container within the asgard network
 ```
-$ docker run -itd --rm --network asgard --name loki busybox
-$ docker run -itd --rm --network asgard --name odin busybox
+$ 
 ```
 </details>
